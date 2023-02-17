@@ -2,7 +2,9 @@ package org.launchcode.Chapter5.Lecture.controllers;
 
 
 import org.launchcode.Chapter5.Lecture.data.DinoData;
+import org.launchcode.Chapter5.Lecture.data.DinosaurRepository;
 import org.launchcode.Chapter5.Lecture.models.Dinosaur;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -21,13 +23,18 @@ import java.util.ArrayList;
 
 public class DinoController {
 
+    // create a DinosaurRepo field so that we can access all of the CRUD methods to save/read data from the DB
+    // private type variableName;
+    @Autowired
+    private DinosaurRepository dinosaurRepository;
+
     // create a method that handles get requests at the /dino path
     @GetMapping
     public String dino(Model model) {
 
         // pass in a list of all of the dinos in our data layer
 
-        model.addAttribute("allDinos", DinoData.getAllDinos());
+        model.addAttribute("allDinos", dinosaurRepository.findAll());
 
         return "dino/index";
     }
