@@ -2,12 +2,16 @@ package org.launchcode.Chapter5.Lecture.models;
 
 import org.springframework.boot.convert.DataSizeUnit;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
-
+@Entity
 public class Dinosaur {
-
+@Id
+@GeneratedValue
     private int id;
-    private static int nextId = 1;
+    // private static int nextId = 1; << no longer needed because we have @Id and @GeneratedValue
 
 @NotBlank
 @Size(min=3)
@@ -18,8 +22,8 @@ public class Dinosaur {
     private String aquatic;
 
     public Dinosaur() {
-        id = nextId;
-        nextId++;
+       // id = nextId; << no longer needed because of @Id and @GeneratedValue
+       //  nextId++; << no longer needed because of @Id and @GeneratedValue but this empty constructor is still needed
     }
 
     public Dinosaur(String species, String diet, String aquatic) {
