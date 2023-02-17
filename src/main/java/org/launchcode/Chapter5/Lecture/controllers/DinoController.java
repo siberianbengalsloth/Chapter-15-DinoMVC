@@ -70,7 +70,9 @@ public class DinoController {
 
 
         // add the newDino to the list!
-        DinoData.addDino(newDino);
+        // DinoData.addDino(newDino); << this is not needed anymore because we are no longer using the datalayer
+        dinosaurRepository.save(newDino);
+
 
         // model.addAttribute("allDinos", DinoData.getAllDinos());
 
