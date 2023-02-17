@@ -6,6 +6,31 @@
 </head>
 <body>
 
+<h1>Add Dinosaur</h1>
+
+<form method="POST">
+    Species:
+    <input type="text" th:field="${dinosaur.species}" required/>
+    <!-- only display this error p tag if there is an error message that needs to be displayed -->
+    <span th:text="${errorMsg}" th:if="${errorMsg}" style="color:red;"></span>
+    <br>
+    <br>
+     Diet:
+    <select th:field="${dinosaur.diet}" required>
+        <option value="Herbivore">Herbivore</option>
+        <option value="Carnivore">Carnivore</option>
+        <option value="Omnivore">Omnivore</option>
+    </select>
+    <br>
+    <br>Is this dinosaurus aquatic?
+    <select th:field="${dinosaur.aquatic}" required>
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+    </select>
+    <br>
+    <br>
+    <button>Add Dino! 🐱‍🐉</button>
+</form>
 
 </body>
 </html>
