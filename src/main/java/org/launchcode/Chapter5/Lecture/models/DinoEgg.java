@@ -6,12 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class DinoEgg {
-@Id
-@GeneratedValue
+public class DinoEgg extends AbstractEntity {
 
-    private int id;
-    private int sizeInches;
+        private int sizeInches;
     private int weightKg;
     private String dateLaid;
 
@@ -28,9 +25,6 @@ private Dinosaur dinosaur; // this must be a field because this instance of an e
         this.dateLaid = dateLaid;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public int getSizeInches() {
         return sizeInches;

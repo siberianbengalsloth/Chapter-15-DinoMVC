@@ -11,11 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Dinosaur {
-@Id
-@GeneratedValue
-    private int id;
-    // private static int nextId = 1; << no longer needed because we have @Id and @GeneratedValue
+public class Dinosaur extends AbstractEntity {
+// @Id
+// @GeneratedValue
+    // private int id;
+    // private static int nextId = 1; << no longer needed because we have @Id and @GeneratedValue - but those are not needed
+    // either if the abstract entity is being extended
 
 @NotBlank
 @Size(min=3)
@@ -66,9 +67,7 @@ private final List<DinoEgg> dinoEggs = new ArrayList<>(); // this links many egg
         this.aquatic = aquatic;
     }
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {        return id;    }
 
 
 }
