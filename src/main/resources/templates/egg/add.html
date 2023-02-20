@@ -17,12 +17,18 @@
     Date Laid:
     <input type = "date" th:field = "${dinoEgg.dateLaid}"  />
     <br>
-    <button>Add Egg!</button>
 
     <!-- made a dropdown input to allow us to select which dino laid the egg -->
+   From which dinosaur did you steal this egg?!
+    <br>
     <select th:field = "${dinoEgg.dinosaur}">
-        <option value = ""></option>
+        <!-- use thymleaf loop to list all the dinosaurs from the database to show as dropdown options -->
+        <option th:each = "dino : ${allDinos}"
+                th:value = "${dino.id}"
+                th:text = "${dino.species}"></option>
     </select>
+        <br>
+    <button>Add Egg!</button>
 
 </form>
 </body>
