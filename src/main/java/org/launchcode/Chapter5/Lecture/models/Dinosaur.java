@@ -5,7 +5,11 @@ import org.springframework.boot.convert.DataSizeUnit;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Dinosaur {
 @Id
@@ -21,9 +25,14 @@ public class Dinosaur {
 @NotNull
     private String aquatic;
 
+// ▼ alongside these normal fields, a field that establishes the relationship between the eggs and dino class must be included
+    @OneToMany(mappedBy = "dinosaur") //match this mappedBy = "name" to the name of the field specified  in the @ManyToOne in the other related model class
+private final List<DinoEgg> dinoEggs = new ArrayList<>(); // this links many eggs to this instance of one dinosaur
+
     public Dinosaur() {
        // id = nextId; << no longer needed because of @Id and @GeneratedValue
        //  nextId++; << no longer needed because of @Id and @GeneratedValue but this empty constructor is still needed
+        // model classes always MUST have an empty constructor! To make model validation and model binding work!
     }
 
     public Dinosaur(String species, String diet, String aquatic) {
